@@ -1,4 +1,4 @@
-routes = [[1,1], [3,1], [5,1], [7,1], [1,2]]
+routes = [[1,1, False], [3,1, True], [5,1, False], [7,1, False], [1,2, False]]
 trees_total = 1
 
 for route in routes:
@@ -7,6 +7,7 @@ for route in routes:
   trees = 0
   right_increment = route[0]
   down = route[1]
+  show_route = route[2]
   input = open("input.txt", "r")
   for line in input:
     if (line_number % down) == 0:
@@ -19,7 +20,8 @@ for route in routes:
     else:
       pass
     line_number += 1
-
+  if show_route:
+    print(f"First answer: {trees}")
   trees_total = trees_total * trees
 
-print(trees_total)
+print(f"Second answer: {trees_total}")
