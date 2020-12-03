@@ -17,8 +17,6 @@ for route in routes:
       if line[right] == "#":
         trees += 1
       right += right_increment
-    else:
-      pass
     line_number += 1
   if show_route:
     print(f"First answer: {trees}")
