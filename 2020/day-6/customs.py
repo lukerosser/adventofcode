@@ -2,8 +2,7 @@ input = open("input.txt", "r")
 
 answer_counts = []
 same_answer_counts = []
-answers1 = ""
-answers2 = ""
+group_answers = ""
 group_members = 0
 
 def declarations(group_answers: str, number_of_people: int = None) -> int:
@@ -19,18 +18,16 @@ def declarations(group_answers: str, number_of_people: int = None) -> int:
 
 for line in input:
   if line != "\n":
-    answers1 = answers1 + line.strip("\n")
-    answers2 = answers2 + line.strip("\n")
+    group_answers = group_answers + line.strip("\n")
     group_members += 1
   else:
-    answer_counts.append(declarations(answers1))
-    same_answer_counts.append(declarations(answers2, group_members))
-    answers1 = ""
-    answers2 = ""
+    answer_counts.append(declarations(group_answers))
+    same_answer_counts.append(declarations(group_answers, group_members))
+    group_answers = ""
     group_members = 0
 
-answer_counts.append(declarations(answers1))
-same_answer_counts.append(declarations(answers2, group_members))
+answer_counts.append(declarations(group_answers))
+same_answer_counts.append(declarations(group_answers, group_members))
 
 print(f"Answer 1: {sum(answer_counts)}")
 print(f"Answer 2 :{sum(same_answer_counts)}")
